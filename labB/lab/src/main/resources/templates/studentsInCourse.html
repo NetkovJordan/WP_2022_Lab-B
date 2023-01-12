@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <title>WP lab - Students in Course</title>
+</head>
+<body class="p-3 mb-2 bg-primary text-dark">
+<header>
+  <h1>Students in Course</h1>
+  <h1 th:text="${course.getName()}"></h1>
+</header>
+<section>
+
+  <ul class="list-group">
+    <li class="list-group-item" th:each="student : ${studentsInCourse}">
+    <span th:text="${student.getName()}"></span><br/>
+      <span th:text="${student.getSurname()}"></span>
+      <span th:if="${grades.get(student.getUsername())} !=null" th:text="${'Grade: ' + grades.get(student.getUsername()).getGrade() + ' , date: ' + grades.get(student.getUsername()).getTimeStamp().format(formatter)}"></span>
+    </li>
+  </ul>
+  <a class="btn btn-success" href="/course">Back</a>
+</section>
+
+</body>
+</html>

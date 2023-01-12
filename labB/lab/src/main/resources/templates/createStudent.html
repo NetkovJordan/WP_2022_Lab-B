@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Create</title>
+</head>
+<body>
+<form th:action="@{/CreateStudent}" th:method="POST">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"></input><br/>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password"></input><br/>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name"></input><br/>
+    <label for="surname">Surname:</label>
+    <input type="text" name="surname" id="surname"></input><br/>
+    <input type="submit" value="Create"></input>
+</form>
+</body>
+</html>

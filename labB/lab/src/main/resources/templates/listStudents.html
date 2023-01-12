@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
+  <title>Add new Student to Course</title>
+  <style type = "text/css">
+    body {
+      width: 800px;
+      margin: auto;
+    }
+    table {
+      width:100%;
+    }
+    table, td, th {
+      border: 1px solid black;
+      padding:3px 2px;
+    }
+    section {
+      float: left;
+      margin: 0 1.5%;
+      width: 63%;
+    }
+    aside {
+      float: right;
+      margin: 0 1.5%;
+      width: 30%;
+    }
+  </style>
+</head>
+<body class="p-3 mb-2 bg-primary text-white">
+<header>
+  <h1>Student Enrollment - Select the Student </h1>
+</header>
+
+<section>
+  <h2>Select the student to enroll:</h2>
+  <a href='/CreateStudent' type='button' class="btn btn-dark">Create New Student</a> <br/> <br/>
+  <form th:action="@{/StudentEnrollmentSummary}" method="post">
+
+    <div th:each="student : ${studentList}">
+      <input type="radio" name="Student" th:value="${student.getUsername()}" id="Student"/>
+      <label for="Student">
+        <span th:text="${student.getName()}"></span>
+        <span th:text="${student.getSurname()}"></span>
+      </label>
+
+    </div>
+  <br/>
+<input type="submit" value="Submit" class="btn btn-dark"/>
+  </form>
+</section>
+<aside>
+  <table class="table table-dark table-striped">
+    <tr>
+      <th colspan="2">
+        Your Enrollment Status
+      </th>
+    </tr>
+    <tr>
+      <td><b>CourseId</b></td>
+      <td  th:text="${session.courseId}"></td>
+    </tr>
+  </table>
+</aside>
+
+</body>
+</html>
